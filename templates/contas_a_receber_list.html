@@ -1,0 +1,29 @@
+<!-- templates/contas_receber_list.html -->
+{% extends 'base.html' %}
+{% block content %}
+<h2>Contas a Receber</h2>
+<a href="{% url 'contas_a_receber_create' %}" class="btn btn-primary">Adicionar Conta</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th>Data de Vencimento</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for conta in contas %}
+        <tr>
+            <td>{{ conta.descricao }}</td>
+            <td>{{ conta.valor }}</td>
+            <td>{{ conta.data_vencimento }}</td>
+            <td>
+                <a href="{% url 'contas_a_receber_update' conta.pk %}" class="btn btn-warning btn-sm">Editar</a>
+                <a href="{% url 'contas_a_receber_delete' conta.pk %}" class="btn btn-danger btn-sm">Deletar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

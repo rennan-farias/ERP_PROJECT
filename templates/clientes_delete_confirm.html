@@ -1,0 +1,10 @@
+<!-- templates/clientes_delete_confirm.html -->
+{% extends 'base.html' %}
+{% block content %}
+<h2>Tem certeza que deseja deletar o cliente "{{ cliente.nome }}"?</h2>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Deletar</button>
+    <a href="{% url 'clientes_list' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

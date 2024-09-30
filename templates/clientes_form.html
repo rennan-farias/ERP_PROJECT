@@ -1,0 +1,26 @@
+<!-- templates/clientes_form.html -->
+{% extends 'base.html' %}
+{% block content %}
+<h2>{% if cliente %}Editar Cliente{% else %}Adicionar Cliente{% endif %}</h2>
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" class="form-control" name="nome" id="nome" value="{{ cliente.nome|default_if_none:'' }}" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="email" id="email" value="{{ cliente.email|default_if_none:'' }}" required>
+    </div>
+    <div class="form-group">
+        <label for="telefone">Telefone</label>
+        <input type="text" class="form-control" name="telefone" id="telefone" value="{{ cliente.telefone|default_if_none:'' }}" required>
+    </div>
+    <div class="form-group">
+        <label for="endereco">Endereço</label>
+        <textarea class="form-control" name="endereco" id="endereco" required>{{ cliente.endereco|default_if_none:'' }}</textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Salvar</button>
+    <a href="{% url 'clientes_list' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

@@ -1,0 +1,27 @@
+<!-- templates/venda_list.html -->
+{% extends 'base.html' %}
+{% block content %}
+<h2>Lista de Vendas</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Data</th>
+            <th>Produtos</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for venda in vendas %}
+        <tr>
+            <td>{{ venda.data }}</td>
+            <td>
+                <ul>
+                    {% for item in venda.itemvenda_set.all %}
+                    <li>{{ item.produto.nome }} - {{ item.quantidade }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

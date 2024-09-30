@@ -1,0 +1,10 @@
+<!-- templates/contas_pagar_delete_confirm.html -->
+{% extends 'base.html' %}
+{% block content %}
+<h2>Tem certeza que deseja deletar a conta {{ conta.descricao }}?</h2>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Deletar</button>
+    <a href="{% url 'contas_a_pagar_list' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

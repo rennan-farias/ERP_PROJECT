@@ -1,0 +1,21 @@
+<!-- templates/estoque_list.html -->
+{% extends 'base.html' %}
+{% block content %}
+<h2>Estoque</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Estoque</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for produto in produtos %}
+        <tr>
+            <td>{{ produto.nome }}</td>
+            <td>{{ produto.estoque }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
